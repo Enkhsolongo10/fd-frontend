@@ -37,11 +37,16 @@ export function Category() {
 
   console.log(categories)
   return(
-    <div>
-      {categories.map((category) => (
-        <Badge key={category?._id}>{category?.categoryName}</Badge>
-      ))}
-      <button className="bg-red-300 p-2 rounded-lg" onClick={addCategory}>Add Category</button>
+    <div className="m-[80px] bg-white h-[176px] w-[1171px] rounded-xl flex flex-col justify-center items-center gap-4">
+      <p className="text-lg font-semibold h-[28px] w-[1123px]">Dishes Category</p>
+
+      <div className="w-[1123px] h-[84px] text-sm font-medium">
+        {categories.map((category) => (
+          <Badge className="w-[145px] h-[36px] rounded-full bg-white border-[1px] border-[#E4E4E7] text-black" key={category?._id}>{category?.categoryName}</Badge>
+        ))}
+        <button className="bg-red-300 p-2 rounded-full" onClick={addCategory}>Add Category</button>
+      </div>
+
     </div>
   )
 }
