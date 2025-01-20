@@ -4,6 +4,7 @@ import Image from "next/image";
 import {useEffect, useState} from 'react';
 import {Badge} from '@/components/ui/badge'
 
+
 type CategoryType = {
   categoryName: string;
   _id: string;
