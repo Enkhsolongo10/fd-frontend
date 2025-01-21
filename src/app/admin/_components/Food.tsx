@@ -18,6 +18,8 @@ export function Food() {
         const response = await fetch('http://localhost:8000/food');
     }
     return(
-        <div>j</div>
+        <div className="w-[1171px] h-[582px] bg-white rounded-xl ml-[20px] mb-[20px]">
+            CARDS
+        </div>
     )
 };
