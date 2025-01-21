@@ -8,28 +8,27 @@ import { CategoryType } from "@/constants/types";
 export function Category() {
 
   const [categories, setCategories] = useState<CategoryType[]>([]);
-  const [value,setValue]=useState<any>()
+  const [value, setValue]=useState<any>()
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch('http://localhost:8000/food-category');
-      const data = await response.json();
-      setCategories(data);
-    };
-    fetchData();
-  }, [value]);
-  
   const addCategory = async (value:any) => {
     await fetch('http://localhost:8000/food-category', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({categoryName:value}),
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({categoryName:value}),
     });
 
+    useEffect(() => {
+      const fetchData = async () => {
+        const response = await fetch('http://localhost:8000/food-category');
+        const data = await response.json();
+        setCategories(data);
+      };
+      fetchData();
+    }, [value]);
   };
-
+  
   return(
     <div className="mt-[80px] ml-[20px] mb-[20px] bg-white h-[176px] w-[1171px] rounded-xl flex flex-col justify-center items-center gap-4">
       <p className="text-lg font-semibold h-[28px] w-[1123px]">Dishes Category</p>
