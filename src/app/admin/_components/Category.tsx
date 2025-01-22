@@ -27,7 +27,6 @@ export function Category() {
         };
         fetchData();
       }, [value]);
-      
   };
 
   return(
@@ -43,7 +42,7 @@ export function Category() {
         ))}
         <Dialog>
             <DialogTrigger asChild>
-              <button className="bg-red-300 p-2 rounded-full">ADD</button>
+              <button className="bg-red-500 p-2 rounded-full">ADD</button>
             </DialogTrigger>
             <DialogContent className="w-[460px] h-[272px] p-8 rounded-xl">
               <DialogTitle className="font-semibold">Add new category</DialogTitle>
