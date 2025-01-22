@@ -6,7 +6,7 @@ export type CategoryType = {
 export  type FoodType = {
       name: string;
       category: string;
-      price: number;
+      price: string;
       image: string;
       ingredients: string;
       _id: string
