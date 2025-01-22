@@ -4,12 +4,23 @@ import {useEffect, useState} from 'react';
 import {Badge} from '@/components/ui/badge'
 import { Dialog, DialogTrigger, DialogContent, DialogTitle} from "@/components/ui/dialog";
 import { CategoryType } from "@/constants/types";
+import { DialogClose } from "@radix-ui/react-dialog";
+import Link from "next/link";
 
 export function Category() {
+  
 
   const [categories, setCategories] = useState<CategoryType[]>([]);
   const [value,setValue]=useState<any>()
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch('http://localhost:8000/food-category');
+      const data = await response?.json();
+      setCategories(data);
+    };
+    fetchData();
+  }, []);
   const addCategory = async (value:any) => {
     await fetch('http://localhost:8000/food-category', {
       method: 'POST',
@@ -18,15 +29,6 @@ export function Category() {
       },
       body: JSON.stringify({categoryName:value}),
     });
-    
-      useEffect(() => {
-        const fetchData = async () => {
-          const response = await fetch('http://localhost:8000/food-category');
-          const data = await response.json();
-          setCategories(data);
-        };
-        fetchData();
-      }, [value]);
   };
 
   return(
@@ -35,10 +37,12 @@ export function Category() {
 
       <div className="w-[1123px] h-[84px] text-sm font-medium">
         {categories.map((category) => (
+          <Link href={`/admin?id=${category._id}`}>
           <Badge className="w-[145px] h-[36px] rounded-full bg-white border-[1px] border-[#E4E4E7] text-black mr-3 mb-3" 
                  key={category?._id}>
                  {category?.categoryName}
           </Badge>
+          </Link>
         ))}
         <Dialog>
             <DialogTrigger asChild>
@@ -56,11 +60,12 @@ export function Category() {
               />
   
               <div className="flex justify-end">
+                <DialogClose asChild>
                 <button 
                   onClick={()=>addCategory(value)} 
                   className="-mb-9 bg-black p-2 rounded-xl text-white w-[123px] h-[40px]">
                   Add category
-                </button>
+                </button></DialogClose>
               </div>
             </DialogContent>
         </Dialog>
