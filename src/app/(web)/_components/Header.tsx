@@ -8,7 +8,7 @@ export function Header() {
                         <p className="text-[#FAFAFA] text-xl font-semibold">Nom</p>
                         <p className="text-red-600 text-xl font-semibold">Nom</p>
                     </div>
-                    <p className="text-[#F4F4F5]">Swift Delivery</p>   
+                    <p className="text-[#F4F4F5] text-sm">Swift Delivery</p>   
                 </div>
             </div>
             <div className="flex items-center gap-3">
