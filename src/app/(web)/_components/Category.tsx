@@ -1,4 +1,4 @@
-export function Order(){
+export function UserCategory(){
     return(
         <div></div>
     )

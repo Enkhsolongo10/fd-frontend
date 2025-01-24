@@ -9,6 +9,15 @@ export function Category() {
 
   const [categories, setCategories] = useState<CategoryType[]>([]);
   const [value, setValue]=useState<any>()
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch('http://localhost:8000/food-category');
+      const data = await response.json();
+      setCategories(data);
+    };
+    fetchData();
+  }, [value]);
 
   const addCategory = async (value:any) => {
     await fetch('http://localhost:8000/food-category', {
@@ -18,17 +27,9 @@ export function Category() {
       },
       body: JSON.stringify({categoryName:value}),
     });
-    
-      useEffect(() => {
-        const fetchData = async () => {
-          const response = await fetch('http://localhost:8000/food-category');
-          const data = await response.json();
-          setCategories(data);
-        };
-        fetchData();
-      }, [value]);
-  };
 
+  };
+  
   return(
     <div className="mt-[80px] ml-[20px] mb-[20px] bg-white h-[176px] w-[1171px] rounded-xl flex flex-col justify-center items-center gap-4">
       <p className="text-lg font-semibold h-[28px] w-[1123px]">Dishes Category</p>
@@ -40,9 +41,10 @@ export function Category() {
                  {category?.categoryName}
           </Badge>
         ))}
+
         <Dialog>
             <DialogTrigger asChild>
-              <button className="bg-red-500 p-2 rounded-full">ADD</button>
+              <button className="bg-[#EF4444] w-[40px] h-[40px] text-white rounded-full text-3xl">+</button>
             </DialogTrigger>
             <DialogContent className="w-[460px] h-[272px] p-8 rounded-xl">
               <DialogTitle className="font-semibold">Add new category</DialogTitle>
