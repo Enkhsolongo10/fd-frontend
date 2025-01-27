@@ -4,11 +4,17 @@ import {useEffect, useState} from 'react';
 import {Badge} from '@/components/ui/badge'
 import { Dialog, DialogTrigger, DialogContent, DialogTitle} from "@/components/ui/dialog";
 import { CategoryType } from "@/constants/types";
+import { usePathname, useSearchParams, useRouter } from "next/navigation";
 
-export function Category() {
+export default function Category() {
 
   const [categories, setCategories] = useState<CategoryType[]>([]);
   const [value, setValue]=useState<any>()
+
+  const pathname = usePathname();
+  const searchParam = useSearchParams();
+  const chosenCategory = searchParam.get("category");
+  const router = useRouter();
   
   useEffect(() => {
     const fetchData = async () => {

@@ -1,17 +1,17 @@
 'use client';
 
-import { Category } from './_components/Category';
+import Category from './categories/page';
 import {useEffect, useState} from 'react';
-import { Food } from './_components/Food';
 import { useSearchParams } from 'next/navigation';
 import { CategoryType } from '@/constants/types';
+import Menu from './foods/page';
 
 
 export default function Admin() {
     return(
         <div className='flex flex-col'>
             <Category/>           
-            <Food/>
+            <Menu/>
         </div>
     )
 };
