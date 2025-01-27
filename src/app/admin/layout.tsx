@@ -32,15 +32,13 @@ export default function AdminLayout({
 
           <SignedIn>
             <div>
-              <div>
+
+              <div className="h-[30px] w-full bg-[#18181B1] flex justify-end mt-5">
                  <UserButton />
               </div>
-        
 
               {children}
             </div>
-            
-            
           </SignedIn>
 
         </div>

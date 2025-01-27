@@ -37,12 +37,12 @@ export default function Category() {
   };
   
   return(
-    <div className="mt-[80px] ml-[20px] mb-[20px] bg-white h-[176px] w-[1171px] rounded-xl flex flex-col justify-center items-center gap-4">
-      <p className="text-lg font-semibold h-[28px] w-[1123px]">Dishes Category</p>
+    <div className="mt-[30px] ml-[20px] mb-[20px] bg-white h-[176px] w-[1430px] rounded-xl flex flex-col justify-center items-start pl-5 gap-4">
+      <p className="text-lg font-semibold h-[28px]">Dishes Category</p>
 
-      <div className="w-[1123px] h-[84px] text-sm font-medium">
+      <div className="text-sm font-medium flex flex-wrap gap-4">
         {categories.map((category) => (
-          <Badge className="w-[145px] h-[36px] rounded-full bg-white border-[1px] border-[#E4E4E7] text-black mr-3 mb-3" 
+          <Badge className="hover:bg-[#EF4444] hover:border-black hover:text-white w-[145px] h-[36px] rounded-full bg-white border-[1px] border-[#E4E4E7] text-black" 
                  key={category?._id}>
                  {category?.categoryName}
           </Badge>

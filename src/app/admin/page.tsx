@@ -4,7 +4,7 @@ import Category from './categories/page';
 import {useEffect, useState} from 'react';
 import { useSearchParams } from 'next/navigation';
 import { CategoryType } from '@/constants/types';
-import Menu from './foods/page';
+import Menu from './menu/page';
 
 
 export default function Admin() {
