@@ -8,10 +8,10 @@ export default function Menu(){
     const searchParams = useSearchParams();
     // const category = useSearchParams("category") || "";
     const id = searchParams.get("id");
-    console.log(id);
+    // console.log({id});
 
     const [foods, setFoods] = useState<FoodType[]>([]);
-    const [value, setValue] = useState<any>();
+    const [value, setValue] = useState<any>([])
     const [form, setForm] = useState({
         name: "",
         price: "",
@@ -29,7 +29,6 @@ export default function Menu(){
             category: "",
         })
     }, []);
-
     useEffect(() => {
         const fetchData = async () => {
             const response = await fetch('http://localhost:8000/food');
@@ -37,10 +36,10 @@ export default function Menu(){
             setFoods(data);
         };
         fetchData();
-    }, [value]);
+    }, []);
 
-    const addFood = async (value:any) => {
-        const response = await fetch('http://localhost:8000/food', {
+    const addFood = async (value:FoodType) => {
+        await fetch('http://localhost:8000/food', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -53,7 +52,7 @@ export default function Menu(){
         const value = e.target.value
         const field = e.target.name 
         setForm({...form, [field]: value})
-        console.log(form)
+        console.log({form});                
     };
 
 
@@ -102,7 +101,7 @@ export default function Menu(){
                                 className="text-sm h-[90px] w-[412px] p-1 border border-1 border-[#E4E4E7] rounded-md hover:border hover:border-black"
                                 type="text"
                                 placeholder="List ingredients..."
-                                onChange={(e) => {setValue(e.target.value);handleInput(e)}}
+                                onChange={(e) => {setForm(value); handleInput(e)}}
                             />
                             </div>
                             <div>
@@ -112,7 +111,7 @@ export default function Menu(){
                                 className=" mt-1 border-dashed text-sm text-black h-[90px] w-[412px] p-1 border border-1 border-[#E4E4E7] rounded-md hover:border hover:border-black"
                                 type="file"
                                 placeholder="Choose a file or drag & drop it here"
-                                onChange={(e) => {setValue(e.target.value);handleInput(e)}}
+                                onChange={(e) => {setValue(e.target.value); handleInput(e)}}
                             />
                             </div>
     
@@ -129,20 +128,20 @@ export default function Menu(){
 
 
                 <div className="flex flex-wrap">{foods.map((food, index) => (
-            <div key={food._id} className="p-3 w-[271px] h-[241px] bg-white border border-[#E4E4E7] rounded-xl flex flex-col">
-                <div className="flex flex-col justify-start">
-                    <img className="w-[238.75px] h-[129px] rounded-lg" src= {food.image}/>
-                    <div className="flex justify-between mt-5">
-                        <p className="text-red-500">{food.name}</p>
-                        <p className="text-red-500">{index + 1}{". "}{food.category}</p>
-                        <p>{food.price}</p>
+                    <div key={food._id} className="p-3 w-[271px] h-[241px] bg-white border border-[#E4E4E7] rounded-xl flex flex-col">
+                        <div className="flex flex-col justify-start">
+                            <img className="w-[238.75px] h-[129px] rounded-lg" src= {food.image}/>
+                            <div className="flex justify-between mt-5">
+                                <p className="text-red-500">{food.name}</p>
+                                {/* <p className="text-red-500">{index + 1}{". "}{food.category}</p> */}
+                                <p>{food.price}</p>
+                            </div>
+                            <p className="mt-2"> {food.ingredients}</p>
+                        </div>         
                     </div>
-                    <p className="mt-2"> {food.ingredients}</p>
+                    ))}
                 </div>
             </div>
-            ))}
-            </div>
-        </div>
         </div>
     )
 };
