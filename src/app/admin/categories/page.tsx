@@ -6,7 +6,7 @@ import { Dialog, DialogTrigger, DialogContent, DialogTitle} from "@/components/u
 import { CategoryType } from "@/constants/types";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
 
-export default function Category() {
+export default function AdminCategoryPage() {
 
   const [categories, setCategories] = useState<CategoryType[]>([]);
   const [value, setValue]=useState<any>()
