@@ -2,8 +2,8 @@
 
 import {useEffect, useState} from 'react';
 import { useSearchParams } from 'next/navigation';
-import AdminCategoryPage from './categories/page';
-import  AdminMenuPage from './menu/page';
+import {AdminCategoryPage} from './category/page';
+import  {AdminMenuPage} from './menu/page';
 
 export default function Admin() {
     return(
