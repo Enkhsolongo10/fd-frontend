@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export const ImageUploader = () => {
+export const Uploader = () => {
     const [imageUrl, setImageUrl] = useState('');
 
     const handleUpload = async(event: React.ChangeEvent<HTMLInputElement>) => {
