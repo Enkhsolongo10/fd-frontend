@@ -26,9 +26,12 @@ export const Uploader = () => {
     };
 
     return(
-        <div>
-            <input type="file" onChange={handleUpload}/>
-            <button>Upload</button>
+        <div className="w-[412px] h-[138px] border border-dashed border-[#2563EB] rounded-md hover:border-black">
+            <input 
+                placeholder=""
+                type="file" 
+                onChange={handleUpload}
+            />
             { imageUrl && <img src={imageUrl}/> }
         </div>
     )
