@@ -1,7 +1,7 @@
 'use client';
 import Image from "next/image";
-import {useEffect, useState} from 'react';
-import {Badge} from '@/components/ui/badge'
+import { useEffect, useState } from 'react';
+import { Badge } from '@/components/ui/badge'
 import { Dialog, DialogTrigger, DialogContent, DialogTitle} from "@/components/ui/dialog";
 import { CategoryType } from "@/constants/types";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
@@ -33,7 +33,6 @@ export function AdminCategoryPage() {
       },
       body: JSON.stringify({categoryName:value}),
     });
-
   };
   
   return(

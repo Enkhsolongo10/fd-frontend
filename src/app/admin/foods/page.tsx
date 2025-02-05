@@ -5,9 +5,11 @@ import { useState, useEffect } from "react";
 import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { useSearchParams } from "next/navigation";
 import { Uploader} from "../_components/Uploader";
+import { useUser } from "@clerk/nextjs";
 
 export function AdminMenuPage() {
 
+    const {user, isLoaded} = useUser();
     const searchParam = useSearchParams();
     const category = searchParam.get("category") || "";
     const id = searchParam.get("id");
@@ -60,8 +62,13 @@ export function AdminMenuPage() {
     };
     
     
+    if(!isLoaded){
+        return null;
+    }
+    
     return(
         <div className="w-[1430px] h-[582px] bg-white rounded-xl ml-[20px] mb-[20px] p-5 flex flex-col">
+            <div>{user?.fullName}</div>
             <p className="text-lg font-semibold">Pizzas</p>
             <div className="flex flex-wrap gap-4">
                 <Dialog>

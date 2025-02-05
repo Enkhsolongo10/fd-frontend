@@ -4,7 +4,8 @@ import {
   SignInButton,
   SignedIn,
   SignedOut,
-  UserButton
+  UserButton,
+  SignUpButton
 } from '@clerk/nextjs'
 
 export default function AdminLayout({
@@ -33,7 +34,13 @@ export default function AdminLayout({
         
       
           <SignedOut>
-            <SignInButton />
+            <SignInButton>
+              <button className="bg-black w-[100px] h-[50px] text-white rounded-lg">Log in</button>
+            </SignInButton>
+
+            <SignUpButton>
+              <button className="bg-black w-[100px] h-[50px] text-white rounded-lg">Sign up</button>
+            </SignUpButton>
           </SignedOut>
 
           <SignedIn>
@@ -48,6 +55,6 @@ export default function AdminLayout({
           </SignedIn>
 
         </div>
-    );
-  }
+    )
+  };
   
