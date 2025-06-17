@@ -7,6 +7,7 @@ import {
   UserButton,
   SignUpButton
 } from '@clerk/nextjs'
+import Admin from "./page";
 
 export default function AdminLayout({
     children,
@@ -14,7 +15,7 @@ export default function AdminLayout({
     children: React.ReactNode;
   }>) {
     return (
-        <div className={`antialiased bg-stone-200 flex`}>
+        <div className="flex bg-stone-200 justify-between">
           <div className="bg-white h-[screen] w-[205px] flex flex-col items-center">
             <div className="w-[170px] h-[44px] flex items-center gap-3 mt-10">
                 <img className="w-[36px] h-[29.18px]" src="headerLogo.png"/>
@@ -31,9 +32,12 @@ export default function AdminLayout({
                 <Badge  className="w-[165px] h-[40px] rounded-full  bg-screen text-black hover:bg-black hover:text-white">Settings</Badge>
               </div>
             </div>
+              <div>
+                <Admin />
+              </div>
         
       
-          <SignedOut>
+          {/* <SignedOut>
             <SignInButton>
               <button className="bg-black w-[100px] h-[50px] text-white rounded-lg">Log in</button>
             </SignInButton>
@@ -48,11 +52,11 @@ export default function AdminLayout({
 
               <div className="h-[30px] w-full bg-[#18181B1] flex justify-end mt-5">
                  <UserButton />
+                 <Admin />
               </div>
-
               {children}
             </div>
-          </SignedIn>
+          </SignedIn> */}
 
         </div>
     )
