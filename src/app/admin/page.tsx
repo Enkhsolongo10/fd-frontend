@@ -2,15 +2,14 @@
 
 import {useEffect, useState} from 'react';
 import { useSearchParams } from 'next/navigation';
-import {AdminCategoryPage} from './category/page';
-import { AdminMenuPage } from './menu/page';
+import { AdminCategory } from '../_components/admin/Category';
+import { AdminMenu } from '../_components/admin/Menu';
 
-
-export default function Admin() {
+export default function AdminPage() {
     return(
-        <div className='flex flex-col'>
-            <AdminCategoryPage />           
-            <AdminMenuPage />
+        <div className='flex flex-col ml-7'>
+            <AdminCategory />           
+            <AdminMenu/>
         </div>
     )
 };

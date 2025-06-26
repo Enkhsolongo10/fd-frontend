@@ -1,4 +1,4 @@
-export function AdminOrderPage(){
+export function AdminOrder(){
     return(
         <div></div>
     )
